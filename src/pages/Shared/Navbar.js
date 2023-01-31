@@ -7,6 +7,7 @@ function Navbar() {
 
   const navItems = [
     { name: "Home", link: "/" },
+    { name: "Blogs", link: "/blogs" },
     { name: "About", link: "/about" },
     { name: "Contact", link: "/contact" },
   ]
@@ -17,10 +18,10 @@ function Navbar() {
   const [toggle, setToggle] = useState(false);
 
   return (
-    <header className='bg-gray-800 sticky top-0 z-40'>
-      <nav className='flex justify-between bg-gray-800 text-gray-100 px-6 py-3'>
+    <nav className='bg-gray-800 sticky top-0 z-40'>
+      <div className='flex justify-between bg-gray-800 text-gray-100 px-6 py-3'>
         <NavLink to="/">
-          <h1 className='pb-6 md:pb-0 pl-2 md:pl-0 text-3xl font-bold'>Navbar</h1>
+          <h1 className='pb-6 md:pb-0 pl-2 md:pl-0 text-2xl font-bold uppercase'>Way To Talk</h1>
         </NavLink>
         <div className={`flex flex-col md:flex-row md:items-center left-0 w-full md:w-auto font-semibold absolute md:static  bg-gray-800 duration-700 ${toggle ? 'top-20' : 'top-[-490px]'}`}>
           {
@@ -37,8 +38,8 @@ function Navbar() {
             toggle ? <MdClose size={26} /> : <BiMenu size={26} />
           }
         </div>
-      </nav>
-    </header>
+      </div>
+    </nav>
   )
 }
 
