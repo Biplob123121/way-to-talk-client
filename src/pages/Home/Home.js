@@ -1,17 +1,16 @@
 import React from 'react'
 import Navbar from '../Shared/Navbar'
-import Apointment from './Apointment'
 import Header from './Header'
 import Service from './Service'
 import Footer from '../Shared/Footer'
+import Makeappointment from './Makeappointment'
 
 export default function Home() {
   return (
     <div>
-        <Navbar />
         <Header />
         <Service />
-        <Apointment />
+        <Makeappointment />
         <Footer />
     </div>
   )

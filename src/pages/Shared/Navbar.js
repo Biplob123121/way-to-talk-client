@@ -7,6 +7,7 @@ function Navbar() {
 
   const navItems = [
     { name: "Home", link: "/" },
+    { name: "Appointment", link: "/appointment" },
     { name: "Blogs", link: "/blogs" },
     { name: "About", link: "/about" },
     { name: "Contact", link: "/contact" },
@@ -32,6 +33,11 @@ function Navbar() {
                 <h2>{item.name}</h2>
               </NavLink>)
           }
+          <div>
+            <NavLink to="/signin">
+              <h2 className="px-3 hover:bg-gray-400 rounded-md hover:text-orange-400">Sign in</h2>
+            </NavLink>
+          </div>
         </div>
         <div onClick={() => setToggle(!toggle)} className='md:hidden cursor-pointer absolute top-4 right-4'>
           {

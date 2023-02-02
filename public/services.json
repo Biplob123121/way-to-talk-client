@@ -1,0 +1,29 @@
+[
+    {
+        "_id": 1,
+        "name": "University Information",
+        "slots": [
+            "7:30 PM - 8:00 PM",
+            "8:00 PM - 8:30 PM",
+            "8:30 PM - 9:00 PM"
+        ]
+    },
+    {
+        "_id": 2,
+        "name": "Visa Information",
+        "slots": [
+            "7:30 PM - 8:00 PM",
+            "8:00 PM - 8:30 PM",
+            "8:30 PM - 9:00 PM"
+        ]
+    },
+    {
+        "_id": 3,
+        "name": "Cost Information",
+        "slots": [
+            "7:30 PM - 8:00 PM",
+            "8:00 PM - 8:30 PM",
+            "8:30 PM - 9:00 PM"
+        ]
+    }
+]
