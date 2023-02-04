@@ -27,15 +27,15 @@ function Navbar() {
         <div className={`flex flex-col md:flex-row md:items-center left-0 w-full md:w-auto font-semibold absolute md:static  bg-gray-800 duration-700 ${toggle ? 'top-20' : 'top-[-490px]'}`}>
           {
             navItems?.map((item, i) =>
-              <NavLink to={item.link} key={i}
+              <NavLink onClick={() => setToggle(!toggle)} to={item.link} key={i}
                 style={({ isActive }) => isActive ? activeStyle : undefined}
-                className="px-3 hover:bg-gray-400 rounded-md hover:text-orange-400">
+                className="px-3 py-1 hover:bg-gray-400 rounded-md hover:text-orange-400">
                 <h2>{item.name}</h2>
               </NavLink>)
           }
           <div>
-            <NavLink to="/signin">
-              <h2 className="px-3 hover:bg-gray-400 rounded-md hover:text-orange-400">Sign in</h2>
+            <NavLink onClick={() => setToggle(!toggle)} to="/signin">
+              <h2 className="px-3 hover:bg-gray-400 rounded-md hover:text-orange-400 mb-4 md:mb-0">Sign in</h2>
             </NavLink>
           </div>
         </div>

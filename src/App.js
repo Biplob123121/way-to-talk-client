@@ -7,6 +7,7 @@ import Bolgs from './pages/Blogs/Bolgs';
 import Signin from './pages/Signin/Signin';
 import Appointment from './pages/Appointment/Appointment';
 import Main from './Layout/Main';
+import Signup from './pages/Signin/Signup';
 
 function App() {
 
@@ -18,9 +19,10 @@ function App() {
         { path: "/blogs", element: <Bolgs /> },
         { path: "/about", element: <About /> },
         { path: "/contact", element: <Contact /> },
+        { path: "/signin", element: <Signin /> },
+        { path: "/signup", element: <Signup /> },
       ]
     },
-    { path: "/signin", element: <Signin /> },
     { path: "*", element: <NotFound /> },
   ])
 

@@ -5,7 +5,7 @@ function Makeappointment() {
     return (
         <section className='bg-base-200 py-16'>
             <div className="hero">
-                <div className="hero-content flex-col lg:flex-row gap-6">
+                <div className="hero-content flex-col lg:flex-row gap-6 px-6">
                     <img src="/images/appointment.jpg" className="w-full md:max-w-sm rounded-lg shadow-2xl" />
                     <div>
                         <span className='text-sm text-blue-500 font-bold'>Appointment</span>

@@ -1,15 +1,16 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function Header() {
     return (
         <header>
             <div className="hero h-screen" style={{ backgroundImage: `url("/images/plane.jpg")` }}>
-                <div className="hero-overlay bg-opacity-60"></div>
+                <div className="hero-overlay bg-opacity-70"></div>
                 <div className="hero-content text-center text-neutral-content">
                     <div className="max-w-md">
-                        <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
-                        <p className="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                        <button className="btn btn-primary">Get Started</button>
+                        <h1 className="mb-5 text-4xl font-bold">Hello there</h1>
+                        <p className="mb-5">Here, we are providing the information about Canada. If you want to go to Canada and you need information, you can contact with us. We give the information about Canadian University, Visa processing.... </p>
+                        <Link to={"/about"}><button className="btn btn-primary">See More</button></Link>
                     </div>
                 </div>
             </div>
