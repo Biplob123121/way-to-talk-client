@@ -1,21 +1,33 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
 
 function Signup() {
 
     const { register, handleSubmit } = useForm();
-    const { createUser } = useContext(AuthContext);
+    const { createUser, updateUser } = useContext(AuthContext);
+    const [signupErr, setSignupErr] = useState('')
 
     const handleSignup = data => {
-        console.log(data);
+        setSignupErr('')
         createUser(data.email, data.password)
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                toast.success("User successfully created!")
+                const userInfo = {
+                    displayName: data.name
+                }
+                updateUser(userInfo)
+                    .then(() => { })
+                    .catch(err => console.log(err))
             })
-            .catch(error => console.log(error))
+            .catch(error => {
+                console.log(error)
+                setSignupErr(error.message)
+            })
     }
 
     return (
@@ -36,6 +48,7 @@ function Signup() {
                         <input type="password" {...register("password")} className="input input-bordered w-full" />
                     </div>
                     <input className='btn w-full btn-accent mt-4' value="Submit" type="submit" />
+                    {signupErr && <p className='text-red-600'>{signupErr}</p>}
                 </form>
                 <p className='text-sm mt-2'>Already have an account? <Link to={'/signin'} className="text-blue-400">Please sigin in</Link></p>
                 <div className="divider">OR</div>
