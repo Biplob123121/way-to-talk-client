@@ -3,6 +3,7 @@ import React from 'react'
 
 function BookingModal({ selectedAppointment, setSelectedAppointment, selected }) {
     const { name, slots } = selectedAppointment;
+    const date = format(selected, "PP")
 
     const handleBooking = event => {
         event.preventDefault();
@@ -21,6 +22,26 @@ function BookingModal({ selectedAppointment, setSelectedAppointment, selected })
             email,
             phone
         }
+        fetch('http://localhost:4000/api/bookings', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(booking)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                // if (data.acknowledged) {
+                //     setTreatment(null);
+                //     toast.success('Booking confirmed');
+                //     refetch();
+                // }
+                // else{
+                //     toast.error(data.message);
+                // }
+            })
+
         setSelectedAppointment(null)
 
     }
@@ -32,7 +53,7 @@ function BookingModal({ selectedAppointment, setSelectedAppointment, selected })
                     <label htmlFor="booking" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                     <h3 className="text-lg font-bold">{name}</h3>
                     <form onSubmit={handleBooking} className='grid grid-cols-1 gap-3 mt-6'>
-                        <input name='date' type="text" value={format(selected, "PP")} className="input input-bordered w-full" disabled />
+                        <input name='date' type="text" value={date} className="input input-bordered w-full" disabled />
                         <select name='slot' className="select select-bordered w-full">
                             {
                                 slots?.map((slot, i) => <option key={i} value={slot}>{slot}</option>)

@@ -8,6 +8,9 @@ import Contact from '../../pages/Contact/Contact';
 import Signin from '../../pages/Signin/Signin';
 import Signup from '../../pages/Signin/Signup';
 import NotFound from '../../pages/Shared/NotFound';
+import PrivateRoute from '../PrivateRoute/PrivateRoute';
+import Dashboard from '../../pages/Dashboard/Dashboard';
+import DashboardLayout from '../../Layout/DashboardLayout';
 
 
 const router = createBrowserRouter([
@@ -20,6 +23,12 @@ const router = createBrowserRouter([
             { path: "/contact", element: <Contact /> },
             { path: "/signin", element: <Signin /> },
             { path: "/signup", element: <Signup /> },
+        ]
+    },
+    {
+        path: '/dashboard', element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
+        children : [
+            {path : '/dashboard', element: <Dashboard></Dashboard>}
         ]
     },
     { path: "*", element: <NotFound /> },

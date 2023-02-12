@@ -45,6 +45,9 @@ function Navbar() {
             style={({ isActive }) => isActive ? activeStyle : undefined}>Contact</NavLink>
           {
             user?.uid ? <>
+              <NavLink to='/dashboard'
+                className="px-3 py-1 hover:bg-gray-400 rounded-md hover:text-orange-400"
+                style={({ isActive }) => isActive ? activeStyle : undefined}>Dashboard</NavLink>
               <button onClick={handleSignOut}>sign Out</button>
             </>
               :

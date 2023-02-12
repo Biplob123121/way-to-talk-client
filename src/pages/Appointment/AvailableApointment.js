@@ -1,18 +1,31 @@
+import { useQuery } from '@tanstack/react-query'
 import { format } from 'date-fns'
 import React, { useEffect, useState } from 'react'
+import Loading from '../../LoadingSpinner/Loading'
 import AppointDetails from './AppointDetails'
 import BookingModal from './BookingModal'
 
 function AvailableApointment({ selected }) {
 
-    const [appointments, setAppointments] = useState([])
+    // const [appointments, setAppointments] = useState([])
     const [selectedAppointment, setSelectedAppointment] = useState(null)
 
-    useEffect(() => {
-        fetch("services.json")
-            .then(res => res.json())
-            .then(data => setAppointments(data))
-    }, [])
+    const { data: appointments = [], isLoading } = useQuery({
+        queryKey: [],
+        queryFn: async () => {
+            const res = await fetch(`http://localhost:4000/api/appointments`);
+            const data = await res.json();
+            return data;
+        }
+    })
+    // useEffect(() => {
+    //     fetch("http://localhost:4000/api/appointments")
+    //         .then(res => res.json())
+    //         .then(data => setAppointments(data))
+    // }, [])
+    if(isLoading){
+        return <Loading></Loading>
+    }
 
     return (
         <section className='bg-base-200 px-6 py-12'>
