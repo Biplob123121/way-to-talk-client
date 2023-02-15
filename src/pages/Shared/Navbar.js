@@ -24,9 +24,12 @@ function Navbar() {
   return (
     <nav className='bg-gray-800 sticky top-0 z-40'>
       <div className='flex justify-between bg-gray-800 text-gray-100 px-6 py-3'>
-        <NavLink to="/">
-          <h1 className='pb-6 md:pb-0 pl-2 md:pl-0 text-2xl font-bold uppercase'>Way To Talk</h1>
-        </NavLink>
+        <div className='flex justify-center items-center pb-6 md:pb-0 pl-2 md:pl-0'>
+          <label htmlFor="dashboard-drawer" className="cursor-pointer lg:hidden"><BiMenu size={26} /></label>
+          <NavLink to="/">
+            <h1 className='ml-2 text-2xl font-bold uppercase'>Way To Talk</h1>
+          </NavLink>
+        </div>
         <div className={`flex flex-col md:flex-row md:items-center left-0 w-full md:w-auto font-semibold absolute md:static  bg-gray-800 duration-700 ${toggle ? 'top-20' : 'top-[-490px]'}`} onClick={() => setToggle(!toggle)}>
           <NavLink to='/'
             className="px-3 py-1 hover:bg-gray-400 rounded-md hover:text-orange-400"

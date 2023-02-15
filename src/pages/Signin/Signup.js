@@ -1,32 +1,61 @@
 import React, { useContext, useState } from 'react'
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
+import useToken from '../../hooks/useToken';
 
 function Signup() {
 
     const { register, handleSubmit } = useForm();
     const { createUser, updateUser } = useContext(AuthContext);
-    const [signupErr, setSignupErr] = useState('')
+    const [signupErr, setSignupErr] = useState('');
+    const [newUserEmail, setnewUserEmail] = useState('');
+    const [token] = useToken(newUserEmail);
+    const navigate = useNavigate();
+
+    
+
+    if (token) {
+        navigate('/');
+    }
 
     const handleSignup = data => {
         setSignupErr('')
         createUser(data.email, data.password)
             .then(result => {
                 const user = result.user;
-                console.log(user);
+                console.log(user)
                 toast.success("User successfully created!")
                 const userInfo = {
                     displayName: data.name
                 }
                 updateUser(userInfo)
-                    .then(() => { })
+                    .then(() => {
+                        saveUser(data.name, data.email)
+                    })
                     .catch(err => console.log(err))
             })
             .catch(error => {
                 console.log(error)
                 setSignupErr(error.message)
+            })
+    }
+
+    const saveUser = (name, email) => {
+        const user = { name, email }
+        fetch('http://localhost:4000/api/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.acknowledged) {
+                    setnewUserEmail(email)
+                }
             })
     }
 

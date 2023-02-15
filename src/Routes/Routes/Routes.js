@@ -11,6 +11,9 @@ import NotFound from '../../pages/Shared/NotFound';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import Dashboard from '../../pages/Dashboard/Dashboard';
 import DashboardLayout from '../../Layout/DashboardLayout';
+import MyAppointment from '../../pages/Dashboard/MyAppointment';
+import AllUser from '../../pages/Dashboard/AllUser';
+import Reviews from '../../pages/Dashboard/Reviews';
 
 
 const router = createBrowserRouter([
@@ -28,7 +31,9 @@ const router = createBrowserRouter([
     {
         path: '/dashboard', element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
         children : [
-            {path : '/dashboard', element: <Dashboard></Dashboard>}
+            {path : '/dashboard', element: <MyAppointment></MyAppointment>},
+            {path : '/dashboard/all-user', element: <AllUser />},
+            {path : '/dashboard/review', element: <Reviews />},
         ]
     },
     { path: "*", element: <NotFound /> },
