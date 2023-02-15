@@ -14,7 +14,10 @@ function AllUser() {
 
   const handleMakeAdmin = id => {
     fetch(`http://localhost:4000/api/users/${id}`, {
-      method: 'PUT'
+      method: 'PUT',
+      headers:{
+        authorization: `bearer ${localStorage.getItem('accessToken')}`
+      }
     })
       .then(res => res.json())
       .then(data => {
@@ -34,6 +37,7 @@ function AllUser() {
             <tr>
               <th></th>
               <th>Name</th>
+              <th>Email</th>
               <th>Make Admin</th>
               <th>Delete user</th>
             </tr>
@@ -44,6 +48,7 @@ function AllUser() {
                 <tr className="hover" key={user._id}>
                   <th>{i + 1}</th>
                   <td>{user.name}</td>
+                  <td>{user.email}</td>
                   <td>{user.role !== 'admin' && <button onClick={() => handleMakeAdmin(user._id)} className='btn btn-xs btn-primary'>Make Admin</button>}</td>
                   <td><button className='btn btn-xs btn-warning'>Delete</button></td>
                 </tr>)
