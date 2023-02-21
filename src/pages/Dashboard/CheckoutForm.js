@@ -70,10 +70,43 @@ function CheckoutForm({ booking }) {
             return;
         }
         if (paymentIntent.status === "succeeded") {
-            setSuccess("Congratz, Your payment successfully done.");
-            setTransactionId(paymentIntent.id);
+            const paymentDetails = {
+                transactionId: paymentIntent.id,
+                email: email,
+                price: price
+            }
+            fetch('http://localhost:4000/api/payments', {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "application/json",
+                    authorization: `bearer ${localStorage.getItem('accessToken')}`
+                },
+                body: JSON.stringify(paymentDetails)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.acknowledged === true) {
+                        updateBooking(booking._id);
+                        setTransactionId(paymentIntent.id);
+                    }
+                })
         }
         setProcessing(false)
+    }
+
+    const updateBooking = id => {
+        fetch(`http://localhost:4000/api/bookings/${id}`, {
+            method: 'PUT',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modified) {
+                    setSuccess("Congratz, Your payment successfully done.");
+                }
+            })
     }
 
     return (

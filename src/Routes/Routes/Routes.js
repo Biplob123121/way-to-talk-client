@@ -35,6 +35,7 @@ const router = createBrowserRouter([
         children: [
             { path: '/dashboard', element: <MyAppointment></MyAppointment> },
             { path: '/dashboard/all-user', element: <AdminRoute><AllUser /></AdminRoute> },
+            { path: '/dashboard/review', element: <Reviews />},
             {
                 path: '/dashboard/payment/:id', element: <Payment />,
                 loader: ({ params }) => fetch(`http://localhost:4000/api/bookings/${params.id}`)

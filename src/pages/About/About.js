@@ -6,7 +6,7 @@ function About() {
     <section>
       <div className="hero min-h-screen bg-base-200 px-6">
         <div className="hero-content flex-col lg:flex-row-reverse gap-6">
-          <img src="/images/sir.jpg" className="w-full lg:max-w-sm rounded-lg shadow-2xl" />
+          <img src="/images/sir.jpg" className="w-full md:max-w-sm rounded-lg shadow-2xl" />
           <div>
             <h1 className="text-4xl font-bold">Who I Am!</h1>
             <p className="py-6">I am Syed Tauhid Johuri. I live in Canada. I am a citizen of Canada. Now, I am working here as a researcher in a Company.</p>

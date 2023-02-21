@@ -57,7 +57,7 @@ function MyAppointment() {
                                             </Link>
                                         }
                                         {
-                                            booking.price && booking.paid && <span>Paid</span>
+                                            booking.price && booking.paid && <span className='text-success'>Paid</span>
                                         }
                                     </td>
                                 </tr>)
