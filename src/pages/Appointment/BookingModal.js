@@ -4,7 +4,7 @@ import { toast } from 'react-hot-toast';
 import { AuthContext } from '../../Contexts/AuthProvider';
 
 function BookingModal({ selectedAppointment, setSelectedAppointment, selected, refetch }) {
-    const { name, slots } = selectedAppointment;
+    const { name, slots, price } = selectedAppointment;
     const date = format(selected, "PP");
 
     const { user } = useContext(AuthContext);
@@ -23,7 +23,8 @@ function BookingModal({ selectedAppointment, setSelectedAppointment, selected, r
             slot,
             client: name,
             email,
-            phone
+            phone,
+            price: selectedAppointment.price
         }
         fetch('http://localhost:4000/api/bookings', {
             method: 'POST',

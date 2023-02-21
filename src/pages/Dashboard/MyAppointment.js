@@ -2,6 +2,9 @@ import React, { useContext } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { AuthContext } from '../../Contexts/AuthProvider'
 import Loading from '../../LoadingSpinner/Loading';
+import { BallTriangle } from 'react-loader-spinner';
+import { Button } from 'react-day-picker';
+import { Link } from 'react-router-dom';
 
 function MyAppointment() {
     const { user } = useContext(AuthContext);
@@ -35,16 +38,28 @@ function MyAppointment() {
                             <th>Name</th>
                             <th>Date</th>
                             <th>Time</th>
+                            <th>Payment</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
-                            bookings.map((booking, i) =>
+                            bookings?.map((booking, i) =>
                                 <tr className="hover" key={booking._id}>
                                     <th>{i + 1}</th>
                                     <td>{booking.serviceName}</td>
                                     <td>{booking.appointmentDate}</td>
                                     <td>{booking.slot}</td>
+                                    <td>
+                                        {
+                                            booking.price && !booking.paid && <Link
+                                                to={`/dashboard/payment/${booking._id}`}>
+                                                <button className='btn btn-primary btn-sm'>Pay Now</button>
+                                            </Link>
+                                        }
+                                        {
+                                            booking.price && booking.paid && <span>Paid</span>
+                                        }
+                                    </td>
                                 </tr>)
                         }
                     </tbody>
