@@ -25,7 +25,6 @@ function Navbar() {
     <nav className='bg-gray-800 sticky top-0 z-40'>
       <div className='flex justify-between bg-gray-800 text-gray-100 px-6 py-3'>
         <div className='flex justify-center items-center pb-6 md:pb-0 pl-2 md:pl-0'>
-          <label htmlFor="dashboard-drawer" className="cursor-pointer lg:hidden"><BiMenu size={26} /></label>
           <NavLink to="/">
             <h1 className='ml-2 text-2xl font-bold uppercase'>Way To Talk</h1>
           </NavLink>

@@ -5,6 +5,7 @@ import Service from './Service'
 import Footer from '../Shared/Footer'
 import Makeappointment from './Makeappointment'
 import Reviews from './Reviews'
+import AskQuestion from './AskQuestion'
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
         <Service />
         <Makeappointment />
         <Reviews />
+        <AskQuestion />
     </div>
   )
 }

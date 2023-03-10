@@ -40,7 +40,7 @@ function BookingModal({ selectedAppointment, setSelectedAppointment, selected, r
                     toast.success('Booking confirmed');
                     refetch();
                 }
-                else{
+                else {
                     toast.error(data.msg);
                 }
             })
@@ -63,7 +63,7 @@ function BookingModal({ selectedAppointment, setSelectedAppointment, selected, r
                         <input name='name' type="text" defaultValue={user?.displayName
                         } placeholder="Your Full Name" className="input input-bordered w-full" disabled />
                         <input name='email' type="email" defaultValue={user?.email} placeholder="Your Email" className="input input-bordered w-full" disabled />
-                        <input name='phone' type="text" placeholder="Phone Number" className="input input-bordered w-full" required/>
+                        <input name='phone' type="text" placeholder="Phone Number" className="input input-bordered w-full" required />
                         <input type="submit" value="Submit" className='btn btn-accent text-gray-100 w-full' />
                     </form>
                 </div>
