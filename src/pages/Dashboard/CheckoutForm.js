@@ -14,7 +14,7 @@ function CheckoutForm({ booking }) {
     const { price, client, email } = booking;
 
     useEffect(() => {
-        fetch("http://localhost:4000/create-payment-intent", {
+        fetch("https://way-to-talk-server.vercel.app/create-payment-intent", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -75,7 +75,7 @@ function CheckoutForm({ booking }) {
                 email: email,
                 price: price
             }
-            fetch('http://localhost:4000/api/payments', {
+            fetch('https://way-to-talk-server.vercel.app/api/payments', {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json",
@@ -95,7 +95,7 @@ function CheckoutForm({ booking }) {
     }
 
     const updateBooking = id => {
-        fetch(`http://localhost:4000/api/bookings/${id}`, {
+        fetch(`https://way-to-talk-server.vercel.app/api/bookings/${id}`, {
             method: 'PUT',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`

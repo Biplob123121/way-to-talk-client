@@ -11,7 +11,7 @@ function Reviews() {
     const { data: reviews = [] } = useQuery({
         queryKey: ['reviews'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:4000/api/reviews');
+            const res = await fetch('https://way-to-talk-server.vercel.app/api/reviews');
             const data = await res.json();
             return data;
         }

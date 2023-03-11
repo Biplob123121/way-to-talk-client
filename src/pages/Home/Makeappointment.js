@@ -11,7 +11,7 @@ function Makeappointment() {
                     <div>
                         <span className='text-sm text-blue-500 font-bold'>Appointment</span>
                         <h1 className='text-2xl font-bold'>Make an appointment Today!</h1>
-                        <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                        <p className="py-6">We are ready to help you. If you want to know any information, please make an appointment today. After appointment, we will send you a meet up link and you can join at the appointmenting time. We will give you all information, what you want to know.</p>
                         <Link to={"/appointment"}><SharedButton>Appointment</SharedButton></Link>
                     </div>
                 </div>

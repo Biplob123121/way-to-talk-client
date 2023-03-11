@@ -5,7 +5,7 @@ const useAdmin = email => {
     const [isAdminLoading, setIsAdminLoading] = useState(true)
 
     useEffect(() => {
-        fetch(`http://localhost:4000/api/users/admin/${email}`)
+        fetch(`https://way-to-talk-server.vercel.app/api/users/admin/${email}`)
             .then(res => res.json())
             .then(data => {
                 setIsAdmin(data.isAdmin);

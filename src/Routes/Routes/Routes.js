@@ -38,7 +38,7 @@ const router = createBrowserRouter([
             { path: '/dashboard/review', element: <Review /> },
             {
                 path: '/dashboard/payment/:id', element: <Payment />,
-                loader: ({ params }) => fetch(`http://localhost:4000/api/bookings/${params.id}`)
+                loader: ({ params }) => fetch(`https://way-to-talk-server.vercel.app/api/bookings/${params.id}`)
             },
         ]
     },

@@ -14,13 +14,13 @@ function AvailableApointment({ selected }) {
     const { data: appointments = [], isLoading, refetch } = useQuery({
         queryKey: ['appointments', date],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:4000/api/appointments?date=${date}`);
+            const res = await fetch(`https://way-to-talk-server.vercel.app/api/appointments?date=${date}`);
             const data = await res.json();
             return data;
         }
     })
     // useEffect(() => {
-    //     fetch("http://localhost:4000/api/appointments")
+    //     fetch("https://way-to-talk-server.vercel.app/api/appointments")
     //         .then(res => res.json())
     //         .then(data => setAppointments(data))
     // }, [])

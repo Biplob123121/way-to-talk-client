@@ -16,7 +16,7 @@ function Review() {
       review
     }
 
-    fetch('http://localhost:4000/api/reviews', {
+    fetch('https://way-to-talk-server.vercel.app/api/reviews', {
       method: 'POST',
       headers: {
         "Content-Type": "application/json",

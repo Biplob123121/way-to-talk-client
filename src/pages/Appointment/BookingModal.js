@@ -26,7 +26,7 @@ function BookingModal({ selectedAppointment, setSelectedAppointment, selected, r
             phone,
             price: selectedAppointment.price
         }
-        fetch('http://localhost:4000/api/bookings', {
+        fetch('https://way-to-talk-server.vercel.app/api/bookings', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

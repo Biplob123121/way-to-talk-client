@@ -6,23 +6,39 @@ function AllUser() {
   const { data: users = [], refetch } = useQuery({
     queryKey: ['users'],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:4000/api/users`);
+      const res = await fetch(`https://way-to-talk-server.vercel.app/api/users`);
       const data = await res.json();
       return data;
     }
   })
 
   const handleMakeAdmin = id => {
-    fetch(`http://localhost:4000/api/users/${id}`, {
+    fetch(`https://way-to-talk-server.vercel.app/api/users/${id}`, {
       method: 'PUT',
-      headers:{
+      headers: {
         authorization: `bearer ${localStorage.getItem('accessToken')}`
       }
     })
       .then(res => res.json())
       .then(data => {
-        if(data.modified){
+        if (data.modified) {
           toast.success("Make admin successful..")
+          refetch();
+        }
+      })
+  }
+
+  const handleDeleteUser = id => {
+    fetch(`https://way-to-talk-server.vercel.app/api/users/${id}`, {
+      method: 'DELETE',
+      headers: {
+        authorization: `bearer ${localStorage.getItem('accessToken')}`
+      }
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.message) {
+          toast.success("User is Deleted..")
           refetch();
         }
       })
@@ -50,7 +66,7 @@ function AllUser() {
                   <td>{user.name}</td>
                   <td>{user.email}</td>
                   <td>{user.role !== 'admin' && <button onClick={() => handleMakeAdmin(user._id)} className='btn btn-xs btn-primary'>Make Admin</button>}</td>
-                  <td><button className='btn btn-xs btn-warning'>Delete</button></td>
+                  <td><button onClick={() => handleDeleteUser(user._id)} className='btn btn-xs btn-warning'>Delete</button></td>
                 </tr>)
             }
           </tbody>
