@@ -9,7 +9,7 @@ function About() {
           <img src="/images/sir.jpg" className="w-full md:max-w-sm rounded-lg shadow-2xl" />
           <div>
             <h1 className="text-4xl font-bold">Who I Am!</h1>
-            <p className="py-6">I am Syed Tauhid Zuhori. I live in Canada. I am a citizen of Canada. Now, I am working here as a researcher in a Company.</p>
+            <p className="py-6">I am Jhon Doe. I live in Canada. I am a citizen of Canada. Now, I am working here as a researcher in a Company.</p>
             <p>I am helping the Bangladeshi people to reach Canada. I can give you the information about the university, visa processing, cost information etc. I am an instructor for the unknown people.</p>
             <Link to={"/appointment"}><button className="btn btn-primary mt-6">Appointment</button></Link>
           </div>
